@@ -109,5 +109,19 @@ size_t MinimumPosition(const int array[], size_t size, size_t min) {
 }
 
 void SelectionSort(int array[], size_t size){
-    cout << array[size] << endl;
+    int small = 0;
+    if(size == 1){
+        return;
+    }else{
+        if(array[size-1] <= array[size-2]){
+            small = array[size-1];
+            array[size-1] = array[size-2];
+            array[size-2] = small;
+            SelectionSort(array, size-1);
+        }
+        SelectionSort(array, size-1);
+        if(array[size-1] < array[size-2]){
+            SelectionSort(array, size);
+        }
+    }
 }
